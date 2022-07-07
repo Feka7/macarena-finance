@@ -71,7 +71,8 @@ export const YearnContextApp = ({children}: {children: ReactElement}): ReactElem
 				toAddress('0x7Da96a3891Add058AdA2E826306D812C638D87a7'), //yvUSDT
 				toAddress('0xdb25cA703181E7484a155DD612b06f57E12Be5F0'), //yvYFI
 				toAddress('0xa258C4606Ca8206D8aA700cE2143D7db854D168c'), //yvETH
-				toAddress('0xA696a63cc78DfFa1a63E9E50587C197387FF6C7E')  //yvBTC
+				toAddress('0xA696a63cc78DfFa1a63E9E50587C197387FF6C7E'),  //yvBTC
+				toAddress('0xd9788f3931Ede4D5018184E198699dC6d66C1915')  //yAAVE
 			],
 			250 : [
 				toAddress('0x0DEC85e74A92c52b7F708c4B10207D9560CEFaf0'), // yvWFTM
@@ -81,6 +82,11 @@ export const YearnContextApp = ({children}: {children: ReactElement}): ReactElem
 				toAddress('0xCe2Fc0bDc18BD6a4d9A725791A3DEe33F3a23BB7'), // yvWETH
 				toAddress('0xd817A100AB8A29fE3DBd925c2EB489D67F758DA9'), // yvWBTC
 				toAddress('0x2C850cceD00ce2b14AA9D658b7Cad5dF659493Db')  // yvYFI
+			],
+			42161 : [
+				toAddress('0x239e14A19DFF93a17339DCC444f74406C17f8E67'), // yvcurve3cripto
+				toAddress('0x49448d2B94fb9C4e41a30aD8315D32f46004A34b'), // 2CRV yVault
+				toAddress('0x1dBa7641dc69188D6086a73B972aC4bda29Ec35d'), // Curve MIM Pool Vault
 			]
 		};
 		vaults = vaults.filter((vault: TVaultAPI): boolean => {
@@ -97,9 +103,9 @@ export const YearnContextApp = ({children}: {children: ReactElement}): ReactElem
 			** to endorse. If the vault's address match one of them, include it
 			** in the final list.
 			******************************************************************/
-			if (endorsedVaults[chainID === 1337 ? 1 : chainID || 1].includes(toAddress(vault.address))) {
-				return true;
-			}
+			 if (endorsedVaults[chainID === 1337 ? 1 : chainID || 1].includes(toAddress(vault.address))) {
+			 	return true;
+			 }
 			return false;
 		});
 
@@ -180,6 +186,8 @@ export const YearnContextApp = ({children}: {children: ReactElement}): ReactElem
 					vault.categories = ['Simple Saver', 'Blue Chip'];
 				if (toAddress(vault.address) === toAddress('0xA696a63cc78DfFa1a63E9E50587C197387FF6C7E')) //BTC
 					vault.categories = ['Simple Saver', 'Blue Chip'];
+				if (toAddress(vault.address) === toAddress('0xd9788f3931Ede4D5018184E198699dC6d66C1915')) //BTC
+					vault.categories = ['Simple Saver', 'Blue Chip'];
 			} else if (chainID === 250) {
 				if (toAddress(vault.address) === toAddress('0x0DEC85e74A92c52b7F708c4B10207D9560CEFaf0')) //yvWFTM
 					vault.categories = ['Simple Saver', 'Blue Chip'];
@@ -194,6 +202,14 @@ export const YearnContextApp = ({children}: {children: ReactElement}): ReactElem
 				if (toAddress(vault.address) === toAddress('0xd817A100AB8A29fE3DBd925c2EB489D67F758DA9')) //yvWBTC
 					vault.categories = ['Simple Saver', 'Blue Chip'];
 				if (toAddress(vault.address) === toAddress('0x2C850cceD00ce2b14AA9D658b7Cad5dF659493Db')) //yvYFI
+					vault.categories = ['Simple Saver', 'Blue Chip'];
+			}
+			else if (chainID === 42161) {
+				if (toAddress(vault.address) === toAddress('0x239e14A19DFF93a17339DCC444f74406C17f8E67')) //tri3
+					vault.categories = ['Simple Saver', 'Blue Chip'];
+				if (toAddress(vault.address) === toAddress('0x49448d2B94fb9C4e41a30aD8315D32f46004A34b')) //curve2
+					vault.categories = ['Simple Saver', 'Blue Chip'];
+				if (toAddress(vault.address) === toAddress('0x1dBa7641dc69188D6086a73B972aC4bda29Ec35d')) //mim
 					vault.categories = ['Simple Saver', 'Blue Chip'];
 			}
 			_vaults.push(vault);

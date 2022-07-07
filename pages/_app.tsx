@@ -10,13 +10,14 @@ import	{KBarProvider, Action, createAction, useRegisterActions}	from	'kbar';
 import	{useWeb3, WithYearn}										from	'@yearn-finance/web-lib/contexts';
 import	{Dropdown}													from	'@yearn-finance/web-lib/components';
 import	{truncateHex}												from	'@yearn-finance/web-lib/utils';
-import	{NetworkEthereum, NetworkFantom, SocialDiscord, SocialGithub, SocialTwitter}				from	'@yearn-finance/web-lib/icons';
+import	{NetworkEthereum, NetworkFantom, SocialDiscord, NetworkArbitrum, SocialGithub, SocialTwitter}				from	'@yearn-finance/web-lib/icons';
 import	useYearn, {YearnContextApp}									from	'contexts/useYearn';
 import	KBar														from	'components/Kbar';
 import	KBarButton													from	'components/KBarButton';
 import	LogoMacarena												from	'components/icons/LogoMacarena';
 
 import	'../style.css';
+import b from '../public/b.jpg'
 
 const transition = {duration: 0.3, ease: [0.17, 0.67, 0.83, 0.67]};
 const thumbnailVariants = {
@@ -33,7 +34,8 @@ type TDropdownOption = {
 function	Header(): ReactElement {
 	const	options: TDropdownOption[] = [
 		{icon: <NetworkEthereum />, label: 'Ethereum', value: 1},
-		{icon: <NetworkFantom />, label: 'Fantom', value: 250}
+		{icon: <NetworkFantom />, label: 'Fantom', value: 250},
+		{icon: <NetworkArbitrum />, label: 'Arbitrum', value: 42161}
 	];
 
 	const	{chainID, onSwitchChain, isActive, address, ens, openLoginModal, onDesactivate} = useWeb3();
@@ -68,7 +70,12 @@ function	Header(): ReactElement {
 						<div aria-label={'logo'} className={'flex col-span-3 justify-center items-center md:col-span-1'}>
 							<Link href={'/'}>
 								<div>
-									<LogoMacarena className={'cursor-pointer'} />
+								<Image
+									src={b}
+									alt="Picture of the author"
+									width={250}
+									height={80}
+									/>
 								</div>
 							</Link>
 						</div>
@@ -164,7 +171,7 @@ function	AppHead(): ReactElement {
 					description: process.env.WEBSITE_DESCRIPTION,
 					images: [
 						{
-							url: `${process.env.WEBSITE_URI}og.png`,
+							url: `${process.env.WEBSITE_URI}b.jpg`,
 							width: 1200,
 							height: 675,
 							alt: 'Macarena'
@@ -267,7 +274,7 @@ function	MyApp(props: AppProps): ReactElement {
 				},
 				web3: {
 					defaultChainID: 1,
-					supportedChainID: [1, 250, 1337]
+					supportedChainID: [1, 250, 42161, 1337]
 				}
 			}}>
 			<YearnContextApp>

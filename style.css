@@ -7,21 +7,21 @@
 
 :root body[data-theme="macarena"] {
 	--default-rounded: 2px;
-	--color-neutral-0: 279 37% 17%;
-	--color-neutral-100: 279 36% 27%;
-	--color-neutral-200: 279 36% 34%;
-	--color-neutral-300: 279 36% 40%;
-	--color-neutral-400: 279 37% 17%;
+	--color-neutral-0: 222 17% 15%;
+	--color-neutral-100: 222 17% 30%;
+	--color-neutral-200: 222 17% 40%;
+	--color-neutral-300: 222 17% 35%;
+	--color-neutral-400: 222 17% 15%;
 	--color-neutral-500: 0 0% 90%;
 	--color-neutral-700: 0 0% 100%;
 
-	--color-primary-100: 279 36% 34%;
-	--color-primary-200: 279 36% 32%;
+	--color-primary-100: 222 17% 20%; /*nav over chain*/
+	--color-primary-200: 222 17% 25%; /*nav select chain*/
 	/* --color-primary-200: 225 47% 41%; */
-	--color-primary-500: 49 100% 50%;
-	--color-primary-600: 49 100% 47%;
-	--color-accent-500: 49 100% 50%;
-	--color-accent-600: 49 100% 47%;
+	--color-primary-500: 357 96% 67%;
+	--color-primary-600: 357 96% 67%;
+	--color-accent-500: 357 96% 50%;
+	--color-accent-600: 357 96% 35%;;
 
 	@apply bg-neutral-200;
 
